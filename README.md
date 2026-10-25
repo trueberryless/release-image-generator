@@ -87,4 +87,4 @@ The image rendering uses the native `canvas` module, so `pnpm install` must be a
 
 Licensed under the MIT license, Copyright © trueberryless.
 
-See [LICENSE](https://github.com/trueberryless-org/release-image-generator/blob/main/LICENSE) for more information.
+See [LICENSE](https://github.com/trueberryless/release-image-generator/blob/main/LICENSE) for more information.
