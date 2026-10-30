@@ -23,13 +23,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Generate GitHub App token
-        id: generate_token
-        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
-        with:
-          app_id: ${{ secrets.BOT_APP_ID }}
-          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
-
       - name: Checkout Repo
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
@@ -53,12 +46,14 @@ jobs:
           commit: "ci: release"
           title: "ci: release [skip netlify]"
         env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get published version
         if: steps.changesets.outputs.hasChangesets == 'true'
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout changeset-release/main
           VERSION=$(node -p "require('./package.json').version")
           NAME=$(node -p "require('./package.json').name")
