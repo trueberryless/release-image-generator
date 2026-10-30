@@ -11,7 +11,7 @@ concurrency:
 
 env:
   IMAGE_NAME: release-image-generator
-  NODE_VERSION: 20
+  NODE_VERSION: 24.14.1
 
 jobs:
   changesets:
