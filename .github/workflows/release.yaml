@@ -44,7 +44,7 @@ jobs:
         with:
           version: pnpm run version
           commit: "ci: release"
-          title: "ci: release [skip netlify]"
+          title: "ci: release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
