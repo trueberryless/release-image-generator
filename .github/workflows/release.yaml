@@ -44,10 +44,9 @@ jobs:
         with:
           version: pnpm run version
           commit: "ci: release"
-          title: "ci: release [skip netlify]"
+          title: "ci: release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get published version
         if: steps.changesets.outputs.hasChangesets == 'true'
@@ -98,23 +97,3 @@ jobs:
           makeLatest: true
           body: ${{ steps.extract-changelog.outputs.markdown }}
           skipIfReleaseExists: true
-
-      - name: Check if release was created
-        id: check_release
-        run: |
-          if [ -z "${{ steps.create_release.outputs.html_url }}" ]; then
-            echo "RELEASE_SKIPPED=true" >> $GITHUB_ENV
-          else
-            echo "RELEASE_SKIPPED=false" >> $GITHUB_ENV
-          fi
-
-      - name: Discord notification
-        if: env.RELEASE_SKIPPED == 'false'
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        uses: Ilshidur/action-discord@d2594079a10f1d6739ee50a2471f0ca57418b554 # 0.4.0
-        with:
-          args: |
-            # ${{ env.IMAGE_NAME }}@${{ needs.image-tag.outputs.IMAGE_TAG }}
-
-            ${{ steps.extract-changelog.outputs.markdown }}
