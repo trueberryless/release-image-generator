@@ -1,5 +1,11 @@
 # release-image-generator
 
+## 0.6.0
+
+### Minor Changes
+
+- [#78](https://github.com/trueberryless/release-image-generator/pull/78) [`9edd3a6`](https://github.com/trueberryless/release-image-generator/commit/9edd3a6540b9525731e6487de6775018fb475c3e) Thanks [@trueberryless-bot](https://github.com/trueberryless-bot)! - Redesign the landing page: every click on "New image" renders a new random image, and you can step back and forth through the images you generated (also with the keyboard shortcuts `R`, `B` and `F`). It shows a live preview and the API URL for the chosen options and works in light and dark mode. The image API is unchanged, and the same seed still produces the same image.
+
 ## 0.5.0
 
 ### Minor Changes

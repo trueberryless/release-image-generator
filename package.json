@@ -1,6 +1,6 @@
 {
   "name": "release-image-generator",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "homepage": "https://release-image-generator.netlify.app/",
   "bugs": {
